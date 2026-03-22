@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecosistemas Educativos — Colegios</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .school-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem 0 4rem;
+    }
+
+    .school-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .school-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+
+    .school-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      color: var(--text-light);
+      line-height: 1.15;
+    }
+
+    .school-type {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 2px;
+      width: fit-content;
+    }
+    .school-type.urbano {
+      background: rgba(200,240,0,0.15);
+      color: var(--accent);
+      border: 1px solid rgba(200,240,0,0.3);
+    }
+    .school-type.rural {
+      background: rgba(255,255,255,0.08);
+      color: var(--text-light);
+      border: 1px solid rgba(255,255,255,0.2);
+      opacity: 0.8;
+    }
+
+    .school-project {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      opacity: 0.65;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .school-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .school-link:hover { opacity: 1; color: var(--accent); }
+
+    .placeholder-note {
+      background: rgba(200,240,0,0.06);
+      border: 1px dashed rgba(200,240,0,0.25);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      opacity: 0.7;
+    }
+    .placeholder-note strong { color: var(--accent); opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">Ecosistemas <span>Educativos</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="equipo.html">Equipo</a></li>
+        <li><a href="colegios.html">Colegios</a></li>
+        <li><a href="guias.html">Guías</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="recursos.html">Recursos</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Guapi, Colombia</div>
+      <h1>Colegios</h1>
+      <p>7 instituciones participantes — 4 urbanas, 3 rurales — desarrollando proyectos de investigación sobre malaria y dengue.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="placeholder-note">
+      <strong>Nota:</strong> Los proyectos individuales de cada colegio están en desarrollo. Esta página se actualizará con los títulos, descripciones y avances de cada proyecto a medida que se definan con los profesores coordinadores.
+    </div>
+
+    <div class="school-grid">
+
+      <div class="school-card">
+        <span class="school-num">Colegio 01 · Urbano</span>
+        <div class="school-name">I.E. San Pedro y San Pablo</div>
+        <span class="school-type urbano">Urbano</span>
+        <p class="school-project">Proyecto de investigación por definir con el coordinador. Sede del primer día del Malaria Lab (enero 2026).</p>
+        <a href="#" class="school-link">Ver proyecto →</a>
+      </div>
+
+      <div class="school-card">
+        <span class="school-num">Colegio 02 · Urbano</span>
+        <div class="school-name">I.E. Normal Superior</div>
+        <span class="school-type urbano">Urbano</span>
+        <p class="school-project">Sede del módulo de Impresión 3D durante el Malaria Lab. Proyecto de investigación por definir.</p>
+        <a href="#" class="school-link">Ver proyecto →</a>
+      </div>
+
+      <div class="school-card">
+        <span class="school-num">Colegio 03 · Urbano</span>
+        <div class="school-name">I.E. San José</div>
+        <span class="school-type urbano">Urbano</span>
+        <p class="school-project">Sede de los módulos de Entomología y Mapeo durante el Malaria Lab. Proyecto de investigación por definir.</p>
+        <a href="#" class="school-link">Ver proyecto →</a>
+      </div>
+
+      <div class="school-card">
+        <span class="school-num">Colegio 04 · Urbano</span>
+        <div class="school-name">I.E. Manuel de Valverde</div>
+        <span class="school-type urbano">Urbano</span>
+        <p class="school-project">Sede del módulo de Entomología y Mapeo (jueves 22). Proyecto de investigación por definir.</p>
+        <a href="#" class="school-link">Ver proyecto →</a>
+      </div>
+
+      <div class="school-card">
+        <span class="school-num">Colegio 05 · Rural</span>
+        <div class="school-name">Por confirmar</div>
+        <span class="school-type rural">Rural</span>
+        <p class="school-project">Colegio rural participante. Nombre y proyecto por confirmar con el equipo de coordinación.</p>
+        <a href="#" class="school-link">Ver proyecto →</a>
+      </div>
+
+      <div class="school-card">
+        <span class="school-num">Colegio 06 · Rural</span>
+        <div class="school-name">Por confirmar</div>
+        <span class="school-type rural">Rural</span>
+        <p class="school-project">Colegio rural participante. Nombre y proyecto por confirmar con el equipo de coordinación.</p>
+        <a href="#" class="school-link">Ver proyecto →</a>
+      </div>
+
+      <div class="school-card">
+        <span class="school-num">Colegio 07 · Rural</span>
+        <div class="school-name">Por confirmar</div>
+        <span class="school-type rural">Rural</span>
+        <p class="school-project">Colegio rural participante. Nombre y proyecto por confirmar con el equipo de coordinación.</p>
+        <a href="#" class="school-link">Ver proyecto →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Ecosistemas Educativos</div>
+      <div class="footer-partners">
+        <span class="footer-partner">Universidad Nacional de Colombia</span>
+        <span class="footer-partner">Harvard T.H. Chan SPH</span>
+      </div>
+      <div class="footer-copy">Malaria Lab · Guapi, Colombia · 2026</div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

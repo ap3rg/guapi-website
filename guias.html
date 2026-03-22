@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecosistemas Educativos — Guías</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .guia-section { padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
+    .guia-section:last-of-type { border-bottom: none; padding-bottom: 4rem; }
+
+    .guia-section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .guia-section-header h2 {
+      font-size: 1.6rem;
+      color: var(--bg-dark);
+    }
+
+    .guia-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .guia-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 0.85rem 1.25rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      gap: 1rem;
+    }
+
+    .guia-item-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .guia-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: var(--accent);
+      opacity: 0.6;
+      white-space: nowrap;
+      min-width: 24px;
+    }
+
+    .guia-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-light);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .guia-status {
+      font-size: 0.75rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .guia-status.disponible {
+      background: rgba(200,240,0,0.15);
+      color: var(--accent);
+      border: 1px solid rgba(200,240,0,0.3);
+    }
+    .guia-status.falta {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-light);
+      opacity: 0.4;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .guia-link {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      opacity: 0.7;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .guia-link:hover { opacity: 1; color: var(--accent); }
+
+    .wip-banner {
+      background: var(--bg-dark);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      opacity: 0.8;
+    }
+    .wip-banner strong { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">Ecosistemas <span>Educativos</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="equipo.html">Equipo</a></li>
+        <li><a href="colegios.html">Colegios</a></li>
+        <li><a href="guias.html">Guías</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="recursos.html">Recursos</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Material de apoyo</div>
+      <h1>Guías</h1>
+      <p>Materiales de apoyo para profesores y estudiantes, organizados por tema.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="wip-banner">
+      <strong>En construcción.</strong> Las guías están siendo consolidadas y algunas están siendo creadas desde cero. Esta página se actualizará a medida que estén disponibles.
+    </div>
+
+    <!-- MAPEO -->
+    <div class="guia-section">
+      <div class="guia-section-header">
+        <h2>1. Mapeo</h2>
+      </div>
+      <div class="guia-list">
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">—</span>
+            <span class="guia-title">Guía de mapeo (GIS, HOTOSM, Avenza, GlobeObserver)</span>
+          </div>
+          <span class="guia-status disponible">Disponible</span>
+          <a href="https://docs.google.com/document/d/1sHRKIq2EUJNNxuXNvrZrvCWMdh7dfeZscs2z_1fJRFo/edit" target="_blank" class="guia-link">Abrir →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ANÁLISIS DE DATOS -->
+    <div class="guia-section">
+      <div class="guia-section-header">
+        <h2>2. Análisis de datos</h2>
+      </div>
+      <div class="guia-list">
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">7</span>
+            <span class="guia-title">Datos entomológicos — identificación de larvas</span>
+          </div>
+          <span class="guia-status disponible">Disponible</span>
+          <a href="https://docs.google.com/document/d/1wc39p-pHFVCLO_qIrEEP2_q1rcK-NMDv/edit" target="_blank" class="guia-link">Abrir →</a>
+        </div>
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">8</span>
+            <span class="guia-title">Datos entomológicos — identificación de hábitats</span>
+          </div>
+          <span class="guia-status disponible">Disponible</span>
+          <a href="https://docs.google.com/document/d/1kQ2ZX4TnfqtvXrVqRbDPcR6oAL78TsSo/edit" target="_blank" class="guia-link">Abrir →</a>
+        </div>
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">6</span>
+            <span class="guia-title">Identificación de hábitats (complemento)</span>
+          </div>
+          <span class="guia-status disponible">Disponible</span>
+          <a href="https://docs.google.com/document/d/1bU22ZI0iR9vcAFO_1wlfSkRYTueQsOs_/edit" target="_blank" class="guia-link">Abrir →</a>
+        </div>
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">1</span>
+            <span class="guia-title">Datos de movilidad (secciones 11.3.3 y 11.3.4)</span>
+          </div>
+          <span class="guia-status disponible">Parcial</span>
+          <a href="https://docs.google.com/document/d/1jLj55hvSuoHu27nnulFFXgONCrK3zJw1/edit" target="_blank" class="guia-link">Abrir →</a>
+        </div>
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">—</span>
+            <span class="guia-title">Datos epidemiológicos (Sesión 4)</span>
+          </div>
+          <span class="guia-status disponible">Parcial</span>
+          <a href="https://docs.google.com/document/d/1jLj55hvSuoHu27nnulFFXgONCrK3zJw1/edit" target="_blank" class="guia-link">Abrir →</a>
+        </div>
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">—</span>
+            <span class="guia-title">Series de tiempo (datos temporales)</span>
+          </div>
+          <span class="guia-status falta">Por crear</span>
+        </div>
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">—</span>
+            <span class="guia-title">Datos de movilidad — guía principal</span>
+          </div>
+          <span class="guia-status falta">Por crear</span>
+        </div>
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">—</span>
+            <span class="guia-title">Datos cualitativos</span>
+          </div>
+          <span class="guia-status falta">Por crear</span>
+        </div>
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">—</span>
+            <span class="guia-title">Datos epidemiológicos — guía principal</span>
+          </div>
+          <span class="guia-status falta">Por crear</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PROYECTOS -->
+    <div class="guia-section">
+      <div class="guia-section-header">
+        <h2>3. Estructuración de proyectos</h2>
+      </div>
+      <div class="guia-list">
+
+        <div class="guia-item">
+          <div class="guia-item-left">
+            <span class="guia-num">—</span>
+            <span class="guia-title">Plantilla de proyectos de investigación</span>
+          </div>
+          <span class="guia-status disponible">Disponible</span>
+          <a href="https://docs.google.com/document/d/1IeWieVIxOKL97ixS9aL-HimApwqGo3pSfGFNC3GJl0w/edit" target="_blank" class="guia-link">Abrir →</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Ecosistemas Educativos</div>
+      <div class="footer-partners">
+        <span class="footer-partner">Universidad Nacional de Colombia</span>
+        <span class="footer-partner">Harvard T.H. Chan SPH</span>
+      </div>
+      <div class="footer-copy">Malaria Lab · Guapi, Colombia · 2026</div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

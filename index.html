@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecosistemas Educativos — Inicio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Hero override for index */
+    .hero {
+      padding: 5rem 0 4rem;
+    }
+    .hero .eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      color: var(--bg-dark);
+      max-width: 820px;
+    }
+    .hero h1 .outline {
+      -webkit-text-stroke: 3px var(--bg-dark);
+      color: transparent;
+    }
+    .hero .subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-mid);
+      margin-top: 1rem;
+    }
+    .hero-body {
+      margin-top: 1.5rem;
+      max-width: 600px;
+      font-size: 1.05rem;
+      color: var(--text-mid);
+    }
+    .hero-cta {
+      display: inline-block;
+      margin-top: 2rem;
+      background: var(--accent);
+      color: var(--text);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.65rem 1.75rem;
+      border-radius: var(--radius);
+      transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.85; color: var(--text); }
+
+    /* Instituciones strip */
+    .instituciones {
+      background: var(--bg-dark);
+      color: var(--text-light);
+      padding: 1.2rem 0;
+    }
+    .instituciones-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .instituciones-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .instituciones-list {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+    }
+
+    /* About strip */
+    .about-strip {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .about-strip .label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .about-strip p {
+      max-width: 760px;
+      font-size: 1.05rem;
+      color: var(--text-mid);
+    }
+
+    /* Module cards */
+    .modulos-section { padding: 4rem 0; }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+    .section-header h2 { color: var(--bg-dark); }
+    .section-header a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-mid);
+      opacity: 0.6;
+    }
+    .section-header a:hover { opacity: 1; color: var(--accent); }
+
+    .modulo-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .modulo-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+    }
+    .modulo-card h3 {
+      color: var(--accent);
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    .modulo-card p {
+      color: var(--text-light);
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+    .modulo-num {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: rgba(200,240,0,0.12);
+      line-height: 1;
+    }
+
+    /* Links section */
+    .links-section {
+      padding: 3rem 0 4rem;
+    }
+    .link-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+    }
+    .link-row:first-child { border-top: 1px solid var(--border); }
+    .link-row-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-mid);
+    }
+    .link-btn {
+      display: inline-block;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.45rem 1.2rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .link-btn:hover { background: var(--accent); color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">Ecosistemas <span>Educativos</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="equipo.html">Equipo</a></li>
+        <li><a href="colegios.html">Colegios</a></li>
+        <li><a href="guias.html">Guías</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="recursos.html">Recursos</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container">
+      <div class="eyebrow">Guapi, Colombia &nbsp;·&nbsp; Malaria Lab</div>
+      <h1>Ecosistemas<br><span class="outline">Educativos</span></h1>
+      <p class="subtitle">Para la innovación en salud pública</p>
+      <p class="hero-body">
+        Un proyecto educativo comunitario que estimula el pensamiento crítico e investigativo
+        en estudiantes de secundaria mediante el aprendizaje basado en proyectos y el fortalecimiento
+        del currículo escolar.
+      </p>
+      <a href="colegios.html" class="hero-cta">Ver colegios →</a>
+    </div>
+  </div>
+
+  <!-- INSTITUCIONES STRIP -->
+  <div class="instituciones">
+    <div class="instituciones-inner">
+      <span class="instituciones-label">Con el apoyo de</span>
+      <div class="instituciones-list">
+        <span>Universidad Nacional de Colombia</span>
+        <span>Harvard T.H. Chan School of Public Health</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about-strip">
+    <div class="container">
+      <div class="label">Sobre el proyecto</div>
+      <p>
+        Malaria Lab integra herramientas de ciencia participativa, mapeo comunitario, microscopía
+        y fabricación digital para desarrollar capacidades locales en ciencia, tecnología y salud pública,
+        con énfasis en la prevención y el control de enfermedades transmitidas por vectores.
+        Trabajamos con 7 colegios de Guapi — 4 urbanos y 3 rurales.
+      </p>
+    </div>
+  </div>
+
+  <!-- MÓDULOS -->
+  <div class="modulos-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Módulos</h2>
+        <a href="guias.html">Ver guías →</a>
+      </div>
+      <div class="grid-3">
+
+        <div class="modulo-card">
+          <span class="modulo-num">01</span>
+          <h3>Entomología</h3>
+          <p>
+            Trabajo entomológico mediante ciencia ciudadana y la aplicación GLOBE Observer de la NASA
+            para registrar hábitats de mosquitos y conectar datos locales con investigación global.
+          </p>
+        </div>
+
+        <div class="modulo-card">
+          <span class="modulo-num">02</span>
+          <h3>Mapeo comunitario</h3>
+          <p>
+            Tecnologías digitales de mapeo para recolectar, organizar y analizar información sobre
+            el territorio. Plataformas colaborativas como HOTOSM, Avenza y GlobeObserver.
+          </p>
+        </div>
+
+        <div class="modulo-card">
+          <span class="modulo-num">03</span>
+          <h3>Impresión 3D</h3>
+          <p>
+            Modelado e impresión 3D, microcontroladores y servomotores aplicados a la educación y
+            salud. Los estudiantes diseñan prototipos para el control de enfermedades vectoriales.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ENLACES RÁPIDOS -->
+  <div class="links-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Repositorio</h2>
+      </div>
+
+      <div class="link-row">
+        <span class="link-row-label">Proyectos de investigación de los colegios</span>
+        <a href="colegios.html" class="link-btn">Ver proyectos</a>
+      </div>
+      <div class="link-row">
+        <span class="link-row-label">Guías de apoyo para profesores</span>
+        <a href="guias.html" class="link-btn">Ver guías</a>
+      </div>
+      <div class="link-row">
+        <span class="link-row-label">Portafolios de datos y publicaciones</span>
+        <a href="recursos.html" class="link-btn">Ver recursos</a>
+      </div>
+      <div class="link-row">
+        <span class="link-row-label">Equipo técnico y organigrama</span>
+        <a href="equipo.html" class="link-btn">Ver equipo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Ecosistemas Educativos</div>
+      <div class="footer-partners">
+        <span class="footer-partner">Universidad Nacional de Colombia</span>
+        <span class="footer-partner">Harvard T.H. Chan SPH</span>
+      </div>
+      <div class="footer-copy">Malaria Lab · Guapi, Colombia · 2026</div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

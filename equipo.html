@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecosistemas Educativos — Equipo</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .role-section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
+    .role-section:last-of-type { border-bottom: none; }
+
+    .role-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .person-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .person-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .person-card .name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .person-card .role-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      opacity: 0.6;
+      line-height: 1.4;
+    }
+
+    .person-card .contact {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      opacity: 0.8;
+      word-break: break-all;
+    }
+    .person-card .contact:hover { opacity: 1; }
+
+    /* Org chart visual */
+    .org-chart {
+      background: var(--bg-dark);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .org-tier {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+    .org-connector {
+      text-align: center;
+      padding: 0.5rem 0;
+      color: var(--accent);
+      font-size: 1.2rem;
+      opacity: 0.4;
+    }
+    .org-box {
+      background: rgba(200,240,0,0.08);
+      border: 1px solid rgba(200,240,0,0.3);
+      border-radius: var(--radius);
+      padding: 0.6rem 1.2rem;
+      text-align: center;
+      min-width: 160px;
+    }
+    .org-box .org-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+    .org-box .org-role {
+      font-size: 0.75rem;
+      color: var(--accent);
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+    .org-box.highlight {
+      background: rgba(200,240,0,0.18);
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">Ecosistemas <span>Educativos</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="equipo.html">Equipo</a></li>
+        <li><a href="colegios.html">Colegios</a></li>
+        <li><a href="guias.html">Guías</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="recursos.html">Recursos</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Proyecto Malaria Lab</div>
+      <h1>Equipo</h1>
+      <p>Responsables del proyecto, equipo técnico y líderes de módulo.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ORGANIGRAMA VISUAL -->
+    <div class="section">
+      <div class="org-chart">
+
+        <div class="org-tier">
+          <div class="org-box highlight">
+            <div class="org-name">Caroline Buckee</div>
+            <div class="org-role">Responsable general</div>
+          </div>
+          <div class="org-box highlight">
+            <div class="org-name">Vladimir Corredor</div>
+            <div class="org-role">Responsable general</div>
+          </div>
+        </div>
+
+        <div class="org-connector">↓</div>
+
+        <div class="org-tier">
+          <div class="org-box">
+            <div class="org-name">Andrea Parra</div>
+            <div class="org-role">Equipo técnico · Módulo Mapeo</div>
+          </div>
+          <div class="org-box">
+            <div class="org-name">Angélica Knudson</div>
+            <div class="org-role">Equipo técnico</div>
+          </div>
+          <div class="org-box">
+            <div class="org-name">Liliana Y. Mosquera</div>
+            <div class="org-role">Comunicación · Enlace colegios</div>
+          </div>
+        </div>
+
+        <div class="org-connector">↓</div>
+
+        <div class="org-tier">
+          <div class="org-box">
+            <div class="org-name">Leyla Yunis</div>
+            <div class="org-role">Módulo Impresión 3D</div>
+          </div>
+          <div class="org-box">
+            <div class="org-name">M. Angélica Riascos</div>
+            <div class="org-role">Módulo Entomología</div>
+          </div>
+          <div class="org-box">
+            <div class="org-name">Jarrinson Aguirre</div>
+            <div class="org-role">Módulo Entomología</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DIRECCIÓN GENERAL -->
+    <div class="role-section">
+      <div class="role-label">Dirección general</div>
+      <div class="person-grid">
+        <div class="person-card">
+          <div class="name">Caroline Buckee</div>
+          <div class="role-desc">Responsable del proyecto general</div>
+        </div>
+        <div class="person-card">
+          <div class="name">Vladimir Corredor</div>
+          <div class="role-desc">Responsable del proyecto general</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EQUIPO TÉCNICO -->
+    <div class="role-section">
+      <div class="role-label">Equipo técnico</div>
+      <div class="person-grid">
+        <div class="person-card">
+          <div class="name">Andrea Parra</div>
+          <div class="role-desc">Equipo técnico · Responsable Módulo Mapeo Comunitario</div>
+        </div>
+        <div class="person-card">
+          <div class="name">Angélica Knudson</div>
+          <div class="role-desc">Equipo técnico</div>
+        </div>
+        <div class="person-card">
+          <div class="name">Vladimir Corredor</div>
+          <div class="role-desc">Equipo técnico</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMUNICACIÓN -->
+    <div class="role-section">
+      <div class="role-label">Comunicación y enlace</div>
+      <div class="person-grid">
+        <div class="person-card">
+          <div class="name">Liliana Y. Mosquera</div>
+          <div class="role-desc">Responsable de comunicación y portavoz · Enlace equipo técnico, colegios y comunidad</div>
+          <a href="mailto:lilianaymosquera14@gmail.com" class="contact">lilianaymosquera14@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MÓDULOS -->
+    <div class="role-section">
+      <div class="role-label">Responsables de módulo</div>
+      <div class="person-grid">
+        <div class="person-card">
+          <div class="name">Leyla Yunis</div>
+          <div class="role-desc">Módulo Impresión 3D</div>
+        </div>
+        <div class="person-card">
+          <div class="name">María Angélica Riascos</div>
+          <div class="role-desc">Módulo Entomología</div>
+        </div>
+        <div class="person-card">
+          <div class="name">Jarrinson Aguirre</div>
+          <div class="role-desc">Módulo Entomología</div>
+        </div>
+        <div class="person-card">
+          <div class="name">Andrea Parra</div>
+          <div class="role-desc">Módulo Mapeo Comunitario</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Ecosistemas Educativos</div>
+      <div class="footer-partners">
+        <span class="footer-partner">Universidad Nacional de Colombia</span>
+        <span class="footer-partner">Harvard T.H. Chan SPH</span>
+      </div>
+      <div class="footer-copy">Malaria Lab · Guapi, Colombia · 2026</div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecosistemas Educativos — Eventos</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Section headers ── */
+    .eventos-section { padding: 3rem 0; }
+    .eventos-section + .eventos-section { border-top: 1px solid var(--border); }
+
+    .section-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--bg-dark);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Upcoming events ── */
+    .upcoming-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .upcoming-card {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .upcoming-date {
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      padding-right: 1.5rem;
+    }
+    .upcoming-date .day {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 2.2rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .upcoming-date .month {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-light);
+      opacity: 0.6;
+      margin-top: 2px;
+    }
+
+    .upcoming-info .event-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.3rem;
+    }
+    .upcoming-info .event-meta {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      opacity: 0.55;
+    }
+    .upcoming-info .event-desc {
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      opacity: 0.7;
+    }
+
+    .upcoming-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 2px;
+      white-space: nowrap;
+      align-self: flex-start;
+    }
+    .upcoming-tag.pronto {
+      background: rgba(200,240,0,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(200,240,0,0.3);
+    }
+    .upcoming-tag.confirmado {
+      background: rgba(255,255,255,0.06);
+      color: var(--text-light);
+      border: 1px solid rgba(255,255,255,0.15);
+      opacity: 0.6;
+    }
+
+    .empty-upcoming {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      border: 1px dashed rgba(200,240,0,0.2);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      opacity: 0.35;
+    }
+
+    /* ── Past events — featured card ── */
+    .past-event-featured {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .past-event-featured .event-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .event-header-text {
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .event-header-text .event-kicker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      opacity: 0.8;
+      margin-bottom: 0.6rem;
+    }
+
+    .event-header-text h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .event-header-text .event-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      opacity: 0.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .event-header-text p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      opacity: 0.75;
+      line-height: 1.6;
+    }
+
+    .event-header-cover {
+      background: #2a2d1e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Placeholder cover — replace with <img> when you have photos */
+    .cover-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      opacity: 0.25;
+      padding: 2rem;
+      text-align: center;
+    }
+    .cover-placeholder .mosquito {
+      font-size: 4rem;
+      filter: grayscale(1);
+    }
+    .cover-placeholder span {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-light);
+    }
+
+    /* When you add a real photo: */
+    .event-header-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.4) contrast(1.1);
+    }
+
+    /* Module strips inside past event */
+    .event-modules {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .event-module {
+      padding: 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+    .event-module:last-child { border-right: none; }
+
+    .module-icon {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: var(--accent);
+      opacity: 0.4;
+      margin-bottom: 0.4rem;
+    }
+
+    .event-module h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .event-module p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      opacity: 0.6;
+      line-height: 1.5;
+    }
+
+    /* Photo gallery strip */
+    .event-gallery {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem;
+    }
+
+    .gallery-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-light);
+      opacity: 0.4;
+      margin-bottom: 0.75rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 6px;
+    }
+
+    .gallery-slot {
+      aspect-ratio: 4/3;
+      background: rgba(255,255,255,0.04);
+      border-radius: 2px;
+      border: 1px dashed rgba(200,240,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-light);
+      opacity: 0.2;
+      cursor: default;
+      overflow: hidden;
+    }
+
+    /* When you add real photos — just swap .gallery-slot with an <img> */
+    .gallery-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.3);
+      transition: filter 0.2s;
+    }
+    .gallery-slot img:hover { filter: grayscale(0); }
+
+    /* Schedule inside past event */
+    .event-schedule {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem 2rem;
+    }
+
+    .schedule-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 1rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      align-items: baseline;
+    }
+    .schedule-row:last-child { border-bottom: none; }
+
+    .schedule-day {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
+    .schedule-content {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      opacity: 0.65;
+    }
+
+    /* Institutions tag */
+    .event-footer-strip {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .event-footer-strip .inst-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-light);
+      opacity: 0.35;
+    }
+    .event-footer-strip .inst-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      opacity: 0.5;
+    }
+
+    /* Photo instruction note */
+    .photo-note {
+      background: rgba(200,240,0,0.05);
+      border: 1px dashed rgba(200,240,0,0.2);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      opacity: 0.6;
+    }
+    .photo-note strong { color: var(--accent); opacity: 1; }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .past-event-featured .event-header { grid-template-columns: 1fr; }
+      .event-header-cover { min-height: 200px; }
+      .event-modules { grid-template-columns: 1fr; }
+      .event-module { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .event-module:last-child { border-bottom: none; }
+      .upcoming-card { grid-template-columns: 70px 1fr; }
+      .upcoming-tag { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">Ecosistemas <span>Educativos</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="equipo.html">Equipo</a></li>
+        <li><a href="colegios.html">Colegios</a></li>
+        <li><a href="guias.html">Guías</a></li>
+        <li><a href="eventos.html">Eventos</a></li>
+        <li><a href="recursos.html">Recursos</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Actividades del proyecto</div>
+      <h1>Eventos</h1>
+      <p>Encuentros, talleres y actividades pasadas y próximas del proyecto.</p>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ── PRÓXIMOS EVENTOS ── -->
+    <div class="eventos-section">
+      <div class="section-eyebrow">Próximamente</div>
+      <h2 class="section-title">Agenda</h2>
+
+      <div class="upcoming-list">
+
+        <div class="upcoming-card">
+          <div class="upcoming-date">
+            <div class="day">25</div>
+            <div class="month">Mar 2026</div>
+          </div>
+          <div class="upcoming-info">
+            <div class="event-title">Reunión de coordinadores</div>
+            <div class="event-meta">Virtual · Guapi, Colombia</div>
+            <div class="event-desc">
+              Reunión de seguimiento con coordinadores de los 7 colegios. Entrega de proyectos con comentarios, definición del plan de trabajo y cronograma general.
+            </div>
+          </div>
+          <span class="upcoming-tag pronto">Esta semana</span>
+        </div>
+
+        <div class="upcoming-card">
+          <div class="upcoming-date">
+            <div class="day">—</div>
+            <div class="month">Jun/Jul 2026</div>
+          </div>
+          <div class="upcoming-info">
+            <div class="event-title">Mapatón HOT-OpenStreetMap</div>
+            <div class="event-meta">Guapi, Colombia</div>
+            <div class="event-desc">
+              Evento de mapeo colaborativo con estudiantes y profesores de los 7 colegios. Proyectos de Colombia de distintos niveles de dificultad. Organizado con HOT OpenStreetMap.
+            </div>
+          </div>
+          <span class="upcoming-tag confirmado">Confirmado</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── EVENTOS PASADOS ── -->
+    <div class="eventos-section">
+      <div class="section-eyebrow">Eventos pasados</div>
+      <h2 class="section-title">Lo que hemos hecho</h2>
+
+      <!-- MALARIA LAB JANUARY 2026 -->
+      <div class="past-event-featured">
+
+        <div class="event-header">
+          <div class="event-header-text">
+            <span class="event-kicker">Enero 19 – 24, 2026 · Guapi, Colombia</span>
+            <h2>Malaria Lab</h2>
+            <div class="event-subtitle">Ecosistemas Educativos para la Innovación en Salud Pública</div>
+            <p>
+              Semana intensiva de talleres con profesores y estudiantes de 4 instituciones educativas de Guapi.
+              El evento introdujo los tres módulos del proyecto — Entomología, Mapeo Comunitario e Impresión 3D —
+              y sentó las bases para los proyectos de investigación de cada colegio.
+            </p>
+          </div>
+          <div class="event-header-cover">
+            <!--
+              TO ADD A COVER PHOTO:
+              Replace the div.cover-placeholder below with:
+              <img src="img/malaria-lab-cover.jpg" alt="Malaria Lab Guapi 2026" />
+            -->
+            <div class="cover-placeholder">
+              <span class="mosquito">🦟</span>
+              <span>Agregar foto de portada</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODULE SUMMARIES -->
+        <div class="event-modules">
+          <div class="event-module">
+            <div class="module-icon">01</div>
+            <h4>Entomología</h4>
+            <p>Identificación de larvas y hábitats de mosquitos con GLOBE Observer de la NASA. Ciencia ciudadana conectada a bases de datos globales.</p>
+          </div>
+          <div class="event-module">
+            <div class="module-icon">02</div>
+            <h4>Mapeo comunitario</h4>
+            <p>Uso de HOTOSM, Avenza y GlobeObserver para mapear el territorio de Guapi. Reflexión sobre datos locales y preguntas explicativas.</p>
+          </div>
+          <div class="event-module">
+            <div class="module-icon">03</div>
+            <h4>Impresión 3D</h4>
+            <p>Diseño y construcción de prototipos con impresoras 3D y microcontroladores. Materiales didácticos y dispositivos para control de vectores.</p>
+          </div>
+        </div>
+
+        <!-- SCHEDULE -->
+        <div class="event-schedule">
+          <div class="schedule-label">Cronograma</div>
+          <div class="schedule-row">
+            <span class="schedule-day">Lunes 19</span>
+            <span class="schedule-content">Bienvenida, presentación del proyecto e introducción a la malaria en Guapi · I.E. San Pedro y San Pablo</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-day">Mar–Jue 20–22</span>
+            <span class="schedule-content">Módulos Impresión 3D (I.E. Normal Superior), Entomología y Mapeo (I.E. San José e I.E. Manuel de Valverde)</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-day">Viernes 23</span>
+            <span class="schedule-content">Socialización de actividades, planeación colectiva y cierre</span>
+          </div>
+        </div>
+
+        <!-- PHOTO GALLERY -->
+        <div class="event-gallery">
+          <div class="gallery-label">Fotos del evento</div>
+          <div class="gallery-grid">
+            <!--
+              TO ADD PHOTOS:
+              Replace each .gallery-slot div with:
+              <div class="gallery-slot"><img src="img/foto1.jpg" alt="descripción" /></div>
+
+              Or just add <img> tags directly inside .gallery-slot divs.
+              Photos will be shown in grayscale with a slight contrast boost, matching the brochure aesthetic.
+              Add as many slots as you have photos.
+            -->
+            <div class="gallery-slot">foto</div>
+            <div class="gallery-slot">foto</div>
+            <div class="gallery-slot">foto</div>
+            <div class="gallery-slot">foto</div>
+            <div class="gallery-slot">foto</div>
+            <div class="gallery-slot">foto</div>
+          </div>
+        </div>
+
+        <!-- INSTITUTIONS -->
+        <div class="event-footer-strip">
+          <span class="inst-label">Con el apoyo de</span>
+          <span class="inst-name">Universidad Nacional de Colombia</span>
+          <span class="inst-name">Harvard T.H. Chan School of Public Health</span>
+        </div>
+
+      </div>
+
+      <div class="photo-note">
+        <strong>Para agregar fotos:</strong> Crea una carpeta <code>img/</code> dentro del sitio y reemplaza los slots grises en la galería con etiquetas <code>&lt;img src="img/tu-foto.jpg"&gt;</code>. Las fotos se muestran en escala de grises con el estilo del brochure.
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Ecosistemas Educativos</div>
+      <div class="footer-partners">
+        <span class="footer-partner">Universidad Nacional de Colombia</span>
+        <span class="footer-partner">Harvard T.H. Chan SPH</span>
+      </div>
+      <div class="footer-copy">Malaria Lab · Guapi, Colombia · 2026</div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>
