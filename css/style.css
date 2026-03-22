@@ -192,7 +192,7 @@ nav {
 .page-hero h1 { color: var(--primary); }
 .page-hero .lead {
   margin-top: 1rem;
-  max-width: 580px;
+  max-width: 800vw;
   font-size: 1.05rem;
   color: var(--text-mid);
 }
