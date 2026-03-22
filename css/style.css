@@ -109,7 +109,13 @@ nav {
   color: var(--primary);
   letter-spacing: 0.01em;
   line-height: 1.1;
+    display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
+
+
 .nav-logo .sub {
   display: block;
   font-family: 'Poppins', sans-serif;
@@ -195,6 +201,13 @@ nav {
   max-width: 800vw;
   font-size: 1.05rem;
   color: var(--text-mid);
+}
+
+.hero-logo {
+  transform: rotate(-3deg);        /* slight tilt */
+  margin-left: 1rem;               /* bring it closer to the title */
+  filter: drop-shadow(0 0 6px white) drop-shadow(0 0 12px white);  /* white glow border */
+  /* or for a cleaner hard border, wrap in a div instead — see below */
 }
 
 /* --- Cards --- */
