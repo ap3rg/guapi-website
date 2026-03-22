@@ -4,129 +4,103 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ecosistemas Educativos — Recursos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    .recursos-section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
-    .recursos-section:last-of-type { border-bottom: none; padding-bottom: 4rem; }
+    .recursos-body { padding: 3rem 0 5rem; }
 
-    .resource-block {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
+    .recursos-group { margin-bottom: 3.5rem; }
+    .recursos-group-title {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1.6rem;
+      color: var(--primary);
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
     }
+
+    .resource-list { display: flex; flex-direction: column; gap: 0.75rem; }
 
     .resource-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 1rem 1.5rem;
-      border: 1px solid var(--border-mid);
       gap: 1rem;
+      transition: border-color 0.15s;
     }
+    .resource-item:hover { border-color: var(--primary); }
 
-    .resource-meta {
-      flex: 1;
-      min-width: 0;
-    }
-
+    .resource-meta { flex: 1; min-width: 0; }
     .resource-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1.05rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
       color: var(--text);
     }
-
     .resource-desc {
-      font-size: 0.85rem;
-      color: var(--text);
-      opacity: 0.55;
-      margin-top: 3px;
-      line-height: 1.4;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-top: 1px;
     }
 
     .resource-btn {
-      display: inline-block;
-      background: transparent;
-      color: var(--accent);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 0.4rem 1rem;
-      border-radius: var(--radius);
-      border: 1px solid rgba(200,240,0,0.35);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--primary);
+      padding: 4px 12px;
+      border: 1px solid var(--border-mid);
+      border-radius: 3px;
       white-space: nowrap;
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.15s, color 0.15s;
     }
-    .resource-btn:hover {
-      background: var(--accent);
-      color: var(--text);
-    }
+    .resource-btn:hover { background: var(--primary); color: #fff; }
 
     .coming-soon {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      padding: 0.4rem 1rem;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: var(--text);
-      opacity: 0.3;
+      color: var(--text-muted);
+      opacity: 0.5;
       white-space: nowrap;
     }
 
-    .section-intro {
-      font-size: 0.95rem;
-      color: var(--text-mid);
-      max-width: 640px;
-      margin-top: 0.25rem;
-    }
-
-    /* HOTOSM info box */
-    .info-box {
-      background: rgba(26,26,20,0.04);
+    /* Mapatón highlight box */
+    .highlight-box {
+      background: rgba(3,87,114,0.05);
       border: 1px solid var(--border-mid);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      margin-top: 1.5rem;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-top: 1rem;
     }
-    .info-box h4 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
+    .highlight-box h4 {
+      font-size: 1.1rem;
+      color: var(--primary);
       margin-bottom: 0.5rem;
     }
-    .info-box p {
-      font-size: 0.9rem;
-      color: var(--text);
-      opacity: 0.75;
+    .highlight-box p {
+      font-size: 0.88rem;
+      font-weight: 300;
     }
-    .info-box a {
-      color: var(--accent);
-      opacity: 0.8;
-    }
-    .info-box a:hover { opacity: 1; }
+    .highlight-box a { color: var(--primary); text-decoration: underline; }
   </style>
 </head>
 <body>
 
   <nav>
     <div class="nav-inner">
-      <div class="nav-logo">Ecosistemas <span>Educativos</span></div>
+      <a href="index.html" class="nav-logo">
+        Ecosistemas Educativos
+        <span class="sub">Para la innovación en salud pública</span>
+      </a>
       <ul class="nav-links">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="equipo.html">Equipo</a></li>
@@ -135,9 +109,7 @@
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="recursos.html">Recursos</a></li>
       </ul>
-      <button class="nav-toggle" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
@@ -145,166 +117,131 @@
     <div class="container">
       <div class="eyebrow">Repositorio</div>
       <h1>Recursos</h1>
-      <p>Portafolios de datos, publicaciones, herramientas y referencias del proyecto.</p>
+      <p class="lead">Portafolios de datos, publicaciones, herramientas y referencias del proyecto.</p>
     </div>
   </div>
 
   <div class="container">
+    <div class="recursos-body">
 
-    <!-- PORTAFOLIOS DE DATOS -->
-    <div class="recursos-section">
-      <h2>Portafolios de datos</h2>
-      <p class="section-intro">Datos recolectados por los estudiantes a través de los módulos del proyecto.</p>
-
-      <div class="resource-block">
-
-        <div class="resource-item">
-          <div class="resource-meta">
-            <div class="resource-title">Datos entomológicos — GLOBE Observer</div>
-            <div class="resource-desc">Registros de hábitats de mosquitos recolectados por estudiantes con la app de NASA.</div>
+      <!-- PORTAFOLIOS -->
+      <div class="recursos-group">
+        <div class="recursos-group-title">Portafolios de datos</div>
+        <div class="resource-list">
+          <div class="resource-item">
+            <div class="resource-meta">
+              <div class="resource-title">Datos entomológicos — GLOBE Observer</div>
+              <div class="resource-desc">Registros de hábitats de mosquitos recolectados por estudiantes con la app de NASA.</div>
+            </div>
+            <span class="coming-soon">Próximamente</span>
           </div>
-          <span class="coming-soon">Próximamente</span>
-        </div>
-
-        <div class="resource-item">
-          <div class="resource-meta">
-            <div class="resource-title">Datos de mapeo comunitario — OpenStreetMap</div>
-            <div class="resource-desc">Contribuciones a HOTOSM y datos geoespaciales del territorio de Guapi.</div>
+          <div class="resource-item">
+            <div class="resource-meta">
+              <div class="resource-title">Datos de mapeo comunitario — OpenStreetMap</div>
+              <div class="resource-desc">Contribuciones a HOTOSM y datos geoespaciales del territorio de Guapi.</div>
+            </div>
+            <a href="https://www.hotosm.org" target="_blank" class="resource-btn">Ir a HOTOSM →</a>
           </div>
-          <a href="https://www.hotosm.org" target="_blank" class="resource-btn">Ir a HOTOSM →</a>
-        </div>
-
-        <div class="resource-item">
-          <div class="resource-meta">
-            <div class="resource-title">Prototipos de Impresión 3D</div>
-            <div class="resource-desc">Archivos y documentación de prototipos diseñados por estudiantes.</div>
+          <div class="resource-item">
+            <div class="resource-meta">
+              <div class="resource-title">Prototipos de Impresión 3D</div>
+              <div class="resource-desc">Archivos y documentación de prototipos diseñados por estudiantes.</div>
+            </div>
+            <span class="coming-soon">Próximamente</span>
           </div>
-          <span class="coming-soon">Próximamente</span>
         </div>
-
-      </div>
-    </div>
-
-    <!-- PUBLICACIONES -->
-    <div class="recursos-section">
-      <h2>Publicaciones y referencias</h2>
-      <p class="section-intro">Artículos y materiales de referencia del equipo de investigación.</p>
-
-      <div class="resource-block">
-
-        <div class="resource-item">
-          <div class="resource-meta">
-            <div class="resource-title">The association between gold mining and malaria in Guyana</div>
-            <div class="resource-desc">De Salazar et al. · Lancet Planetary Health · 2021</div>
-          </div>
-          <a href="https://doi.org/10.1016/S2542-5196(21)00230-7" target="_blank" class="resource-btn">Ver →</a>
-        </div>
-
-        <div class="resource-item">
-          <div class="resource-meta">
-            <div class="resource-title">Repositorio de publicaciones del proyecto</div>
-            <div class="resource-desc">Colección completa de publicaciones relacionadas con el proyecto.</div>
-          </div>
-          <span class="coming-soon">Próximamente</span>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- HERRAMIENTAS -->
-    <div class="recursos-section">
-      <h2>Herramientas</h2>
-      <p class="section-intro">Plataformas y aplicaciones usadas en los módulos del proyecto.</p>
-
-      <div class="resource-block">
-
-        <div class="resource-item">
-          <div class="resource-meta">
-            <div class="resource-title">GLOBE Observer — NASA</div>
-            <div class="resource-desc">App para registro ciudadano de hábitats de mosquitos. Módulo Entomología.</div>
-          </div>
-          <a href="https://observer.globe.gov" target="_blank" class="resource-btn">Ir →</a>
-        </div>
-
-        <div class="resource-item">
-          <div class="resource-meta">
-            <div class="resource-title">HOT OpenStreetMap</div>
-            <div class="resource-desc">Mapeo colaborativo humanitario. Módulo Mapeo Comunitario.</div>
-          </div>
-          <a href="https://www.hotosm.org" target="_blank" class="resource-btn">Ir →</a>
-        </div>
-
-        <div class="resource-item">
-          <div class="resource-meta">
-            <div class="resource-title">Curso MOOC — Mapeo abierto</div>
-            <div class="resource-desc">Curso gratuito de HOT y PNUD sobre mapeo abierto como infraestructura digital pública.</div>
-          </div>
-          <a href="https://learning.hotosm.org/start" target="_blank" class="resource-btn">Ir →</a>
-        </div>
-
       </div>
 
-      <div class="info-box">
-        <h4>Mapatón HOT-OpenStreetMap</h4>
-        <p>
-          Programado para <strong>junio/julio 2026</strong>. Los estudiantes y profesores participarán en un evento
-          de mapeo colaborativo con proyectos de Colombia de distintos niveles de dificultad.
-          Más información en <a href="https://www.hotosm.org/es/" target="_blank">hotosm.org</a>.
-        </p>
+      <!-- PUBLICACIONES -->
+      <div class="recursos-group">
+        <div class="recursos-group-title">Publicaciones</div>
+        <div class="resource-list">
+          <div class="resource-item">
+            <div class="resource-meta">
+              <div class="resource-title">The association between gold mining and malaria in Guyana</div>
+              <div class="resource-desc">De Salazar et al. · Lancet Planetary Health · 2021</div>
+            </div>
+            <a href="https://doi.org/10.1016/S2542-5196(21)00230-7" target="_blank" class="resource-btn">Ver →</a>
+          </div>
+          <div class="resource-item">
+            <div class="resource-meta">
+              <div class="resource-title">Repositorio completo de publicaciones</div>
+              <div class="resource-desc">Todas las publicaciones relacionadas con el proyecto.</div>
+            </div>
+            <span class="coming-soon">Próximamente</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERRAMIENTAS -->
+      <div class="recursos-group">
+        <div class="recursos-group-title">Herramientas</div>
+        <div class="resource-list">
+          <div class="resource-item">
+            <div class="resource-meta">
+              <div class="resource-title">GLOBE Observer — NASA</div>
+              <div class="resource-desc">App para registro ciudadano de hábitats de mosquitos. Módulo Entomología.</div>
+            </div>
+            <a href="https://observer.globe.gov" target="_blank" class="resource-btn">Ir →</a>
+          </div>
+          <div class="resource-item">
+            <div class="resource-meta">
+              <div class="resource-title">HOT OpenStreetMap</div>
+              <div class="resource-desc">Mapeo colaborativo humanitario. Módulo Mapeo Comunitario.</div>
+            </div>
+            <a href="https://www.hotosm.org" target="_blank" class="resource-btn">Ir →</a>
+          </div>
+          <div class="resource-item">
+            <div class="resource-meta">
+              <div class="resource-title">Curso MOOC — Mapeo abierto</div>
+              <div class="resource-desc">Curso gratuito de HOT y PNUD sobre mapeo abierto como infraestructura digital pública.</div>
+            </div>
+            <a href="https://learning.hotosm.org/start" target="_blank" class="resource-btn">Ir →</a>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <h4>Mapatón HOT-OpenStreetMap</h4>
+          <p>Programado para <strong>junio/julio 2026</strong>. Los estudiantes y profesores participarán en un evento de mapeo colaborativo. Más información en <a href="https://www.hotosm.org/es/" target="_blank">hotosm.org</a>.</p>
+        </div>
+      </div>
+
+      <!-- ESPACIO VIRTUAL -->
+      <div class="recursos-group">
+        <div class="recursos-group-title">Espacio virtual</div>
+        <div class="resource-list">
+          <div class="resource-item">
+            <div class="resource-meta">
+              <div class="resource-title">Carpeta del proyecto en Google Drive</div>
+              <div class="resource-desc">Acceso para miembros del equipo. Proyectos, guías, actas y materiales de trabajo.</div>
+            </div>
+            <a href="https://drive.google.com/drive/u/0/folders/12UgWhl1Pj3lXpPe7xedaVGgm3GX2DPy9" target="_blank" class="resource-btn">Abrir Drive →</a>
+          </div>
+        </div>
       </div>
 
     </div>
-
-    <!-- ESPACIO VIRTUAL -->
-    <div class="recursos-section">
-      <h2>Espacio virtual</h2>
-      <p class="section-intro">Documentos de trabajo, actas de reuniones y materiales internos del equipo.</p>
-
-      <div class="resource-block">
-        <div class="resource-item">
-          <div class="resource-meta">
-            <div class="resource-title">Carpeta del proyecto en Google Drive</div>
-            <div class="resource-desc">Acceso para miembros del equipo. Incluye proyectos, guías, actas y materiales de trabajo.</div>
-          </div>
-          <a href="https://drive.google.com/drive/u/0/folders/12UgWhl1Pj3lXpPe7xedaVGgm3GX2DPy9" target="_blank" class="resource-btn">Abrir Drive →</a>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-logo">Ecosistemas Educativos</div>
-      <div class="footer-partners">
-        <span class="footer-partner">Universidad Nacional de Colombia</span>
-        <span class="footer-partner">Harvard T.H. Chan SPH</span>
+      <div class="footer-top">
+        <div class="footer-logo-block">
+          <div class="footer-logo">Ecosistemas Educativos</div>
+          <div class="footer-sub">Para la innovación en salud pública · Guapi, Colombia</div>
+        </div>
+        <div class="footer-partners">
+          <div class="footer-partner-slot"><div class="footer-partner-text">Universidad Nacional<br>de Colombia</div></div>
+          <div class="footer-partner-slot"><div class="footer-partner-text">Harvard T.H. Chan<br>School of Public Health</div></div>
+        </div>
       </div>
-      <div class="footer-copy">Malaria Lab · Guapi, Colombia · 2026</div>
+      <div class="footer-bottom">
+        <span>Malaria Lab · 2026</span>
+        <span>Guapi, Cauca, Colombia</span>
+      </div>
     </div>
   </footer>
 
-  <script>
-/* nav.js — shared navigation behaviour */
-
-(function () {
-  /* Mark active link based on current page */
-  const links = document.querySelectorAll('.nav-links a');
-  const current = location.pathname.split('/').pop() || 'index.html';
-  links.forEach(a => {
-    if (a.getAttribute('href') === current) a.classList.add('active');
-  });
-
-  /* Mobile hamburger toggle */
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-  }
-})();
-
-</script>
+  <script src="js/nav.js"></script>
 </body>
 </html>

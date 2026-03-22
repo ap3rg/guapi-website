@@ -4,413 +4,243 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ecosistemas Educativos — Eventos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* ── Section headers ── */
-    .eventos-section { padding: 3rem 0; }
-    .eventos-section + .eventos-section { border-top: 1px solid var(--border); }
+    .eventos-body { padding: 3rem 0 5rem; }
 
-    .section-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      color: var(--bg-dark);
-      margin-bottom: 2rem;
-    }
-
-    /* ── Upcoming events ── */
-    .upcoming-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+    /* ── Upcoming ── */
+    .upcoming-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 4rem; }
 
     .upcoming-card {
-      display: grid;
-      grid-template-columns: 90px 1fr auto;
-      align-items: center;
-      gap: 1.5rem;
       background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.5rem;
-      border: 1px solid var(--border-mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
     }
 
-    .upcoming-date {
+    .upcoming-date-block {
       text-align: center;
-      border-right: 1px solid rgba(255,255,255,0.1);
+      border-right: 1px solid var(--border);
       padding-right: 1.5rem;
     }
-    .upcoming-date .day {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 2.2rem;
-      color: var(--accent);
+    .upcoming-day {
+      font-family: 'Boogaloo', cursive;
+      font-size: 2.4rem;
+      color: var(--primary);
       line-height: 1;
     }
-    .upcoming-date .month {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 0.8rem;
+    .upcoming-month {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--text);
-      opacity: 0.6;
+      color: var(--text-muted);
       margin-top: 2px;
     }
 
-    .upcoming-info .event-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      color: var(--text);
-      margin-bottom: 0.3rem;
+    .upcoming-info-title {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
     }
-    .upcoming-info .event-meta {
-      font-size: 0.85rem;
-      color: var(--text);
-      opacity: 0.55;
+    .upcoming-info-meta {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
     }
-    .upcoming-info .event-desc {
-      margin-top: 0.4rem;
-      font-size: 0.9rem;
-      color: var(--text);
-      opacity: 0.7;
+    .upcoming-info-desc {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-mid);
     }
 
-    .upcoming-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
+    .upcoming-pill {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      padding: 4px 10px;
-      border-radius: 2px;
+      padding: 4px 12px;
+      border-radius: 20px;
       white-space: nowrap;
       align-self: flex-start;
     }
-    .upcoming-tag.pronto {
-      background: rgba(26,26,20,0.06);
-      color: var(--accent);
-      border: 1px solid var(--border-mid);
-    }
-    .upcoming-tag.confirmado {
-      background: rgba(255,255,255,0.06);
+    .upcoming-pill.urgent {
+      background: var(--accent);
       color: var(--text);
-      border: 1px solid rgba(255,255,255,0.15);
-      opacity: 0.6;
+    }
+    .upcoming-pill.confirmed {
+      border: 1px solid var(--border-mid);
+      color: var(--text-muted);
     }
 
-    .empty-upcoming {
-      background: var(--bg-card);
-      border-radius: var(--radius);
-      padding: 2rem;
-      text-align: center;
-      border: 1px dashed var(--border-mid);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text);
-      opacity: 0.35;
+    /* ── Section divider ── */
+    .eventos-section-head {
+      margin: 3rem 0 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
     }
+    .eventos-section-head h2 { color: var(--primary); }
 
-    /* ── Past events — featured card ── */
-    .past-event-featured {
+    /* ── Past event card ── */
+    .past-event {
       background: var(--bg-card);
-      border-radius: var(--radius);
-      border: 1px solid var(--border-mid);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
       overflow: hidden;
       margin-bottom: 2rem;
     }
 
-    .past-event-featured .event-header {
+    .past-event-top {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
     }
 
-    .event-header-text {
+    .past-event-info {
       padding: 2.5rem 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
     }
-
-    .event-header-text .event-kicker {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
+    .past-event-kicker {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--accent);
-      opacity: 0.8;
-      margin-bottom: 0.6rem;
-    }
-
-    .event-header-text h2 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      color: var(--accent);
-      line-height: 1;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
       margin-bottom: 0.5rem;
     }
-
-    .event-header-text .event-subtitle {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text);
-      opacity: 0.65;
+    .past-event-info h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin-bottom: 0.5rem;
+    }
+    .past-event-info .sub {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 200;
+      font-size: 0.95rem;
+      color: var(--text-muted);
       margin-bottom: 1.25rem;
     }
-
-    .event-header-text p {
-      font-size: 0.95rem;
-      color: var(--text);
-      opacity: 0.75;
-      line-height: 1.6;
+    .past-event-info p {
+      font-size: 0.9rem;
+      font-weight: 300;
     }
 
-    .event-header-cover {
+    .past-event-cover {
       background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       min-height: 280px;
-      position: relative;
       overflow: hidden;
-    }
-
-    /* Placeholder cover — replace with <img> when you have photos */
-    .cover-placeholder {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.75rem;
-      opacity: 0.3;
-      padding: 2rem;
-      text-align: center;
     }
-    .cover-placeholder .mosquito {
-      font-size: 4rem;
-      filter: grayscale(1);
-    }
-    .cover-placeholder span {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text);
-    }
-
-    /* When you add a real photo: */
-    .event-header-cover img {
+    .past-event-cover img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(0.4) contrast(1.1);
+    }
+    /* placeholder */
+    .cover-hint {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 1rem;
+      opacity: 0.5;
     }
 
-    /* Module strips inside past event */
+    /* Module row */
     .event-modules {
-      border-top: 1px solid var(--border);
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0;
+      border-top: 1px solid var(--border);
     }
-
     .event-module {
-      padding: 1.5rem;
+      padding: 1.25rem 1.5rem;
       border-right: 1px solid var(--border);
     }
     .event-module:last-child { border-right: none; }
-
-    .module-icon {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 1.4rem;
-      color: var(--accent);
-      opacity: 0.4;
-      margin-bottom: 0.4rem;
-    }
-
     .event-module h4 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
       font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text);
+      color: var(--primary);
       margin-bottom: 0.4rem;
     }
-
     .event-module p {
-      font-size: 0.85rem;
-      color: var(--text);
-      opacity: 0.6;
-      line-height: 1.5;
+      font-size: 0.82rem;
+      font-weight: 300;
     }
 
-    /* Photo gallery strip */
+    /* Gallery */
     .event-gallery {
       border-top: 1px solid var(--border);
       padding: 1.5rem;
     }
-
     .gallery-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 0.15em;
-      color: var(--text);
-      opacity: 0.4;
+      color: var(--text-muted);
       margin-bottom: 0.75rem;
     }
-
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       gap: 6px;
     }
-
     .gallery-slot {
       aspect-ratio: 4/3;
       background: var(--bg);
-      border-radius: 2px;
+      border-radius: 4px;
       border: 1px dashed var(--border-mid);
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Barlow Condensed', sans-serif;
       font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text);
-      opacity: 0.2;
-      cursor: default;
-      overflow: hidden;
-    }
-
-    /* When you add real photos — just swap .gallery-slot with an <img> */
-    .gallery-slot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(0.3);
-      transition: filter 0.2s;
-    }
-    .gallery-slot img:hover { filter: grayscale(0); }
-
-    /* Schedule inside past event */
-    .event-schedule {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-    }
-
-    .schedule-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-      opacity: 0.7;
-      margin-bottom: 0.75rem;
-    }
-
-    .schedule-row {
-      display: grid;
-      grid-template-columns: 90px 1fr;
-      gap: 1rem;
-      padding: 0.4rem 0;
-      border-bottom: 1px solid var(--border);
-      align-items: baseline;
-    }
-    .schedule-row:last-child { border-bottom: none; }
-
-    .schedule-day {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      opacity: 0.7;
-    }
-
-    .schedule-content {
-      font-size: 0.9rem;
-      color: var(--text);
-      opacity: 0.65;
-    }
-
-    /* Institutions tag */
-    .event-footer-strip {
-      border-top: 1px solid var(--border);
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .event-footer-strip .inst-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text);
-      opacity: 0.35;
-    }
-    .event-footer-strip .inst-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text);
+      color: var(--text-muted);
       opacity: 0.5;
     }
+    .gallery-slot img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 1;
+    }
 
-    /* Photo instruction note */
-    .photo-note {
-      background: rgba(200,240,0,0.05);
+    .photo-tip {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
       border: 1px dashed var(--border-mid);
       border-radius: var(--radius);
-      padding: 1rem 1.5rem;
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: var(--text);
-      opacity: 0.6;
     }
-    .photo-note strong { color: var(--accent); opacity: 1; }
+    .photo-tip code {
+      font-size: 0.78rem;
+      background: rgba(3,87,114,0.06);
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: var(--primary);
+    }
 
-    /* Responsive */
-    @media (max-width: 700px) {
-      .past-event-featured .event-header { grid-template-columns: 1fr; }
-      .event-header-cover { min-height: 200px; }
+    @media (max-width: 768px) {
+      .past-event-top { grid-template-columns: 1fr; }
+      .past-event-cover { min-height: 200px; }
       .event-modules { grid-template-columns: 1fr; }
       .event-module { border-right: none; border-bottom: 1px solid var(--border); }
       .event-module:last-child { border-bottom: none; }
       .upcoming-card { grid-template-columns: 70px 1fr; }
-      .upcoming-tag { display: none; }
+      .upcoming-pill { display: none; }
     }
   </style>
 </head>
@@ -418,7 +248,10 @@
 
   <nav>
     <div class="nav-inner">
-      <div class="nav-logo">Ecosistemas <span>Educativos</span></div>
+      <a href="index.html" class="nav-logo">
+        Ecosistemas Educativos
+        <span class="sub">Para la innovación en salud pública</span>
+      </a>
       <ul class="nav-links">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="equipo.html">Equipo</a></li>
@@ -427,9 +260,7 @@
         <li><a href="eventos.html">Eventos</a></li>
         <li><a href="recursos.html">Recursos</a></li>
       </ul>
-      <button class="nav-toggle" aria-label="Menú">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" aria-label="Menú"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
@@ -437,132 +268,91 @@
     <div class="container">
       <div class="eyebrow">Actividades del proyecto</div>
       <h1>Eventos</h1>
-      <p>Encuentros, talleres y actividades pasadas y próximas del proyecto.</p>
+      <p class="lead">Encuentros, talleres y actividades pasadas y próximas.</p>
     </div>
   </div>
 
   <div class="container">
+    <div class="eventos-body">
 
-    <!-- ── PRÓXIMOS EVENTOS ── -->
-    <div class="eventos-section">
-      <div class="section-eyebrow">Próximamente</div>
-      <h2 class="section-title">Agenda</h2>
+      <!-- PRÓXIMOS -->
+      <div class="eventos-section-head">
+        <div class="section-label">Próximamente</div>
+        <h2>Agenda</h2>
+      </div>
 
       <div class="upcoming-list">
-
         <div class="upcoming-card">
-          <div class="upcoming-date">
-            <div class="day">25</div>
-            <div class="month">Mar 2026</div>
+          <div class="upcoming-date-block">
+            <div class="upcoming-day">25</div>
+            <div class="upcoming-month">Mar 2026</div>
           </div>
           <div class="upcoming-info">
-            <div class="event-title">Reunión de coordinadores</div>
-            <div class="event-meta">Virtual · Guapi, Colombia</div>
-            <div class="event-desc">
-              Reunión de seguimiento con coordinadores de los 7 colegios. Entrega de proyectos con comentarios, definición del plan de trabajo y cronograma general.
-            </div>
+            <div class="upcoming-info-title">Reunión de coordinadores</div>
+            <div class="upcoming-info-meta">Virtual · Guapi, Colombia</div>
+            <div class="upcoming-info-desc">Seguimiento con coordinadores de los 7 colegios. Entrega de proyectos comentados, plan de trabajo y cronograma general.</div>
           </div>
-          <span class="upcoming-tag pronto">Esta semana</span>
+          <span class="upcoming-pill urgent">Esta semana</span>
         </div>
 
         <div class="upcoming-card">
-          <div class="upcoming-date">
-            <div class="day">—</div>
-            <div class="month">Jun/Jul 2026</div>
+          <div class="upcoming-date-block">
+            <div class="upcoming-day">—</div>
+            <div class="upcoming-month">Jun/Jul 2026</div>
           </div>
           <div class="upcoming-info">
-            <div class="event-title">Mapatón HOT-OpenStreetMap</div>
-            <div class="event-meta">Guapi, Colombia</div>
-            <div class="event-desc">
-              Evento de mapeo colaborativo con estudiantes y profesores de los 7 colegios. Proyectos de Colombia de distintos niveles de dificultad. Organizado con HOT OpenStreetMap.
-            </div>
+            <div class="upcoming-info-title">Mapatón HOT-OpenStreetMap</div>
+            <div class="upcoming-info-meta">Guapi, Colombia</div>
+            <div class="upcoming-info-desc">Evento de mapeo colaborativo con estudiantes y profesores. Proyectos de Colombia de distintos niveles, organizado con HOT OpenStreetMap.</div>
           </div>
-          <span class="upcoming-tag confirmado">Confirmado</span>
+          <span class="upcoming-pill confirmed">Confirmado</span>
         </div>
-
       </div>
-    </div>
 
-    <!-- ── EVENTOS PASADOS ── -->
-    <div class="eventos-section">
-      <div class="section-eyebrow">Eventos pasados</div>
-      <h2 class="section-title">Lo que hemos hecho</h2>
+      <!-- PASADOS -->
+      <div class="eventos-section-head">
+        <div class="section-label">Eventos pasados</div>
+        <h2>Lo que hemos hecho</h2>
+      </div>
 
-      <!-- MALARIA LAB JANUARY 2026 -->
-      <div class="past-event-featured">
-
-        <div class="event-header">
-          <div class="event-header-text">
-            <span class="event-kicker">Enero 19 – 24, 2026 · Guapi, Colombia</span>
+      <div class="past-event">
+        <div class="past-event-top">
+          <div class="past-event-info">
+            <div class="past-event-kicker">Enero 19 – 24, 2026 · Guapi, Colombia</div>
             <h2>Malaria Lab</h2>
-            <div class="event-subtitle">Ecosistemas Educativos para la Innovación en Salud Pública</div>
-            <p>
-              Semana intensiva de talleres con profesores y estudiantes de 4 instituciones educativas de Guapi.
-              El evento introdujo los tres módulos del proyecto — Entomología, Mapeo Comunitario e Impresión 3D —
-              y sentó las bases para los proyectos de investigación de cada colegio.
-            </p>
+            <div class="sub">Ecosistemas Educativos para la Innovación en Salud Pública</div>
+            <p>Semana intensiva con profesores y estudiantes de 4 instituciones educativas. Se introdujeron los tres módulos del proyecto y se sentaron las bases para los proyectos de investigación de cada colegio.</p>
           </div>
-          <div class="event-header-cover">
+          <div class="past-event-cover">
             <!--
-              TO ADD A COVER PHOTO:
-              Replace the div.cover-placeholder below with:
-              <img src="img/malaria-lab-cover.jpg" alt="Malaria Lab Guapi 2026" />
+              Agrega tu foto de portada:
+              <img src="img/guapi-2026-grupo.jpg" alt="Grupo Malaria Lab Guapi 2026" />
             -->
-            <div class="cover-placeholder">
-              <span class="mosquito">🦟</span>
-              <span>Agregar foto de portada</span>
-            </div>
+            <div class="cover-hint">Agregar foto de portada<br><code>img/</code></div>
           </div>
         </div>
 
-        <!-- MODULE SUMMARIES -->
         <div class="event-modules">
           <div class="event-module">
-            <div class="module-icon">01</div>
             <h4>Entomología</h4>
-            <p>Identificación de larvas y hábitats de mosquitos con GLOBE Observer de la NASA. Ciencia ciudadana conectada a bases de datos globales.</p>
+            <p>Identificación de larvas y hábitats con GLOBE Observer. Ciencia ciudadana conectada a datos globales.</p>
           </div>
           <div class="event-module">
-            <div class="module-icon">02</div>
             <h4>Mapeo comunitario</h4>
-            <p>Uso de HOTOSM, Avenza y GlobeObserver para mapear el territorio de Guapi. Reflexión sobre datos locales y preguntas explicativas.</p>
+            <p>HOTOSM, Avenza y GlobeObserver para mapear el territorio. Del dato local a la pregunta explicativa.</p>
           </div>
           <div class="event-module">
-            <div class="module-icon">03</div>
             <h4>Impresión 3D</h4>
-            <p>Diseño y construcción de prototipos con impresoras 3D y microcontroladores. Materiales didácticos y dispositivos para control de vectores.</p>
+            <p>Diseño y construcción de prototipos con impresoras 3D y microcontroladores para control de vectores.</p>
           </div>
         </div>
 
-        <!-- SCHEDULE -->
-        <div class="event-schedule">
-          <div class="schedule-label">Cronograma</div>
-          <div class="schedule-row">
-            <span class="schedule-day">Lunes 19</span>
-            <span class="schedule-content">Bienvenida, presentación del proyecto e introducción a la malaria en Guapi · I.E. San Pedro y San Pablo</span>
-          </div>
-          <div class="schedule-row">
-            <span class="schedule-day">Mar–Jue 20–22</span>
-            <span class="schedule-content">Módulos Impresión 3D (I.E. Normal Superior), Entomología y Mapeo (I.E. San José e I.E. Manuel de Valverde)</span>
-          </div>
-          <div class="schedule-row">
-            <span class="schedule-day">Viernes 23</span>
-            <span class="schedule-content">Socialización de actividades, planeación colectiva y cierre</span>
-          </div>
-        </div>
-
-        <!-- PHOTO GALLERY -->
         <div class="event-gallery">
           <div class="gallery-label">Fotos del evento</div>
           <div class="gallery-grid">
             <!--
-              TO ADD PHOTOS:
-              Replace each .gallery-slot div with:
+              Para agregar fotos reemplaza cada .gallery-slot con:
               <div class="gallery-slot"><img src="img/foto1.jpg" alt="descripción" /></div>
-
-              Or just add <img> tags directly inside .gallery-slot divs.
-              Photos will be shown in grayscale with a slight contrast boost, matching the brochure aesthetic.
-              Add as many slots as you have photos.
             -->
             <div class="gallery-slot">foto</div>
             <div class="gallery-slot">foto</div>
@@ -571,19 +361,10 @@
             <div class="gallery-slot">foto</div>
             <div class="gallery-slot">foto</div>
           </div>
+          <div class="photo-tip">
+            Para agregar fotos: crea una carpeta <code>img/</code> en el repo y reemplaza los slots con <code>&lt;img src="img/tu-foto.jpg"&gt;</code>
+          </div>
         </div>
-
-        <!-- INSTITUTIONS -->
-        <div class="event-footer-strip">
-          <span class="inst-label">Con el apoyo de</span>
-          <span class="inst-name">Universidad Nacional de Colombia</span>
-          <span class="inst-name">Harvard T.H. Chan School of Public Health</span>
-        </div>
-
-      </div>
-
-      <div class="photo-note">
-        <strong>Para agregar fotos:</strong> Crea una carpeta <code>img/</code> dentro del sitio y reemplaza los slots grises en la galería con etiquetas <code>&lt;img src="img/tu-foto.jpg"&gt;</code>. Las fotos se muestran en escala de grises con el estilo del brochure.
       </div>
 
     </div>
@@ -591,36 +372,23 @@
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-logo">Ecosistemas Educativos</div>
-      <div class="footer-partners">
-        <span class="footer-partner">Universidad Nacional de Colombia</span>
-        <span class="footer-partner">Harvard T.H. Chan SPH</span>
+      <div class="footer-top">
+        <div class="footer-logo-block">
+          <div class="footer-logo">Ecosistemas Educativos</div>
+          <div class="footer-sub">Para la innovación en salud pública · Guapi, Colombia</div>
+        </div>
+        <div class="footer-partners">
+          <div class="footer-partner-slot"><div class="footer-partner-text">Universidad Nacional<br>de Colombia</div></div>
+          <div class="footer-partner-slot"><div class="footer-partner-text">Harvard T.H. Chan<br>School of Public Health</div></div>
+        </div>
       </div>
-      <div class="footer-copy">Malaria Lab · Guapi, Colombia · 2026</div>
+      <div class="footer-bottom">
+        <span>Malaria Lab · 2026</span>
+        <span>Guapi, Cauca, Colombia</span>
+      </div>
     </div>
   </footer>
 
-  <script>
-/* nav.js — shared navigation behaviour */
-
-(function () {
-  /* Mark active link based on current page */
-  const links = document.querySelectorAll('.nav-links a');
-  const current = location.pathname.split('/').pop() || 'index.html';
-  links.forEach(a => {
-    if (a.getAttribute('href') === current) a.classList.add('active');
-  });
-
-  /* Mobile hamburger toggle */
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
-  }
-})();
-
-</script>
+  <script src="js/nav.js"></script>
 </body>
 </html>
