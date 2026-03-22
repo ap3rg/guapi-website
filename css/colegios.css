@@ -1,0 +1,107 @@
+
+.school-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.5rem;
+    padding: 2.5rem 0 5rem;
+}
+
+.school-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+    /* notebook grid */
+    background-image:
+    linear-gradient(rgba(3,87,114,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(3,87,114,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-color: var(--bg-card);
+}
+.school-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.school-num {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+}
+
+.school-name {
+    font-family: 'Boogaloo', cursive;
+    font-size: 1.35rem;
+    color: var(--primary);
+    line-height: 1.15;
+}
+
+.school-badges {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.badge-urbano {
+    background: var(--accent);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 9px;
+    border-radius: 3px;
+}
+.badge-rural {
+    border: 1px solid var(--border-mid);
+    color: var(--text-muted);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 9px;
+    border-radius: 3px;
+}
+
+.school-project {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    font-weight: 300;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.school-link {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 0.25rem;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+}
+.school-link:hover { opacity: 1; color: var(--primary); }
+
+.info-note {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
