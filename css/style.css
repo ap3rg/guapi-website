@@ -203,12 +203,26 @@ nav {
   color: var(--text-mid);
 }
 
-.hero-logo {
-  transform: rotate(-3deg);        /* slight tilt */
-  margin-left: 1rem;               /* bring it closer to the title */
-  filter: drop-shadow(0 0 6px white) drop-shadow(0 0 12px white);  /* white glow border */
-  /* or for a cleaner hard border, wrap in a div instead — see below */
+.hero-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: flex-start;  /* was flex-end */
 }
+
+.hero h1 {
+  text-align: right;
+}
+
+.hero-logo {
+  height: 180px;
+  object-fit: contain;
+  border: 4px solid white;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
 
 /* --- Cards --- */
 .card {
