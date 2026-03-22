@@ -25,7 +25,7 @@
     font-size: clamp(1rem, 2.2vw, 1.25rem);
     color: var(--text-mid);
     margin-top: 1.25rem;
-    max-width: 560px;
+    max-width: 800vw;
     line-height: 1.65;
 }
 .hero-actions {
