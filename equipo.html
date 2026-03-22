@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ecosistemas Educativos — Equipo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     .role-section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
     .role-section:last-of-type { border-bottom: none; }
@@ -29,10 +29,10 @@
     }
 
     .person-card {
-      background: var(--card-bg);
+      background: var(--bg-card);
       border-radius: var(--radius);
       padding: 1.25rem 1.5rem;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid var(--border-mid);
     }
 
     .person-card .name {
@@ -40,13 +40,13 @@
       font-weight: 700;
       font-size: 1.15rem;
       text-transform: uppercase;
-      color: var(--text-light);
+      color: var(--text);
       margin-bottom: 0.25rem;
     }
 
     .person-card .role-desc {
       font-size: 0.85rem;
-      color: var(--text-light);
+      color: var(--text);
       opacity: 0.6;
       line-height: 1.4;
     }
@@ -63,11 +63,12 @@
 
     /* Org chart visual */
     .org-chart {
-      background: var(--bg-dark);
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
       border-radius: var(--radius);
       padding: 2rem;
       margin: 2rem 0;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--border-mid);
     }
     .org-tier {
       display: flex;
@@ -84,8 +85,8 @@
       opacity: 0.4;
     }
     .org-box {
-      background: rgba(200,240,0,0.08);
-      border: 1px solid rgba(200,240,0,0.3);
+      background: rgba(26,26,20,0.05);
+      border: 1px solid var(--border-mid);
       border-radius: var(--radius);
       padding: 0.6rem 1.2rem;
       text-align: center;
@@ -96,7 +97,7 @@
       font-weight: 700;
       font-size: 0.95rem;
       text-transform: uppercase;
-      color: var(--text-light);
+      color: var(--text);
     }
     .org-box .org-role {
       font-size: 0.75rem;
@@ -105,7 +106,7 @@
       margin-top: 2px;
     }
     .org-box.highlight {
-      background: rgba(200,240,0,0.18);
+      background: rgba(200,240,0,0.25);
       border-color: var(--accent);
     }
   </style>
@@ -273,6 +274,27 @@
     </div>
   </footer>
 
-  <script src="js/nav.js"></script>
+  <script>
+/* nav.js — shared navigation behaviour */
+
+(function () {
+  /* Mark active link based on current page */
+  const links = document.querySelectorAll('.nav-links a');
+  const current = location.pathname.split('/').pop() || 'index.html';
+  links.forEach(a => {
+    if (a.getAttribute('href') === current) a.classList.add('active');
+  });
+
+  /* Mobile hamburger toggle */
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  }
+})();
+
+</script>
 </body>
 </html>

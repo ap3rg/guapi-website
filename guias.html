@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ecosistemas Educativos — Guías</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     .guia-section { padding: 2.5rem 0; border-bottom: 1px solid var(--border); }
     .guia-section:last-of-type { border-bottom: none; padding-bottom: 4rem; }
@@ -34,10 +34,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: var(--card-bg);
+      background: var(--bg-card);
       border-radius: var(--radius);
       padding: 0.85rem 1.25rem;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid var(--border-mid);
       gap: 1rem;
     }
 
@@ -65,7 +65,7 @@
       font-size: 1rem;
       text-transform: uppercase;
       letter-spacing: 0.04em;
-      color: var(--text-light);
+      color: var(--text);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -82,13 +82,13 @@
       white-space: nowrap;
     }
     .guia-status.disponible {
-      background: rgba(200,240,0,0.15);
+      background: var(--accent);
       color: var(--accent);
-      border: 1px solid rgba(200,240,0,0.3);
+      border: 1px solid var(--border-mid);
     }
     .guia-status.falta {
       background: rgba(255,255,255,0.05);
-      color: var(--text-light);
+      color: var(--text);
       opacity: 0.4;
       border: 1px solid rgba(255,255,255,0.1);
     }
@@ -107,13 +107,13 @@
     .guia-link:hover { opacity: 1; color: var(--accent); }
 
     .wip-banner {
-      background: var(--bg-dark);
+      background: var(--bg-card);
       border-left: 3px solid var(--accent);
       border-radius: var(--radius);
       padding: 1rem 1.5rem;
       margin-bottom: 2rem;
       font-size: 0.9rem;
-      color: var(--text-light);
+      color: var(--text);
       opacity: 0.8;
     }
     .wip-banner strong { color: var(--accent); }
@@ -290,6 +290,27 @@
     </div>
   </footer>
 
-  <script src="js/nav.js"></script>
+  <script>
+/* nav.js — shared navigation behaviour */
+
+(function () {
+  /* Mark active link based on current page */
+  const links = document.querySelectorAll('.nav-links a');
+  const current = location.pathname.split('/').pop() || 'index.html';
+  links.forEach(a => {
+    if (a.getAttribute('href') === current) a.classList.add('active');
+  });
+
+  /* Mobile hamburger toggle */
+  const toggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (toggle && navLinks) {
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  }
+})();
+
+</script>
 </body>
 </html>
