@@ -49,7 +49,7 @@
     flex-wrap: wrap;
 }
 
-.badge-urbano {
+.badge-colegio {
     background: var(--accent);
     color: var(--text);
     font-family: 'Poppins', sans-serif;
@@ -60,17 +60,7 @@
     padding: 2px 9px;
     border-radius: 3px;
 }
-.badge-rural {
-    border: 1px solid var(--border-mid);
-    color: var(--text-muted);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 2px 9px;
-    border-radius: 3px;
-}
+
 
 .school-project {
     font-size: 0.88rem;

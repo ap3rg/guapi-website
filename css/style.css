@@ -8,6 +8,7 @@
 /* --- Variables --- */
 :root {
   --bg:           #f0f5f3;   /* very light off-white bluish-green */
+  --bg-dark:      #3a3d38;
   --bg-card:      #ffffff;
   --bg-grid:      #ffffff;
   --primary:      #035772;   /* teal blue */
@@ -75,6 +76,16 @@ strong { font-weight: 500; }
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
+
+/* links */
+
+a[href^="mailto:"] {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: var(--accent);
+}
+
+a[href^="mailto:"]:hover { text-decoration: underline; }
 
 /* --- Layout --- */
 .container {
